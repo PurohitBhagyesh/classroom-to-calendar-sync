@@ -20,8 +20,8 @@
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="1200" height="400" rx="16" fill="url(#bgGrad)" />
+  <!-- Background (Full Bleed Edge-to-Edge) -->
+  <rect width="1200" height="400" fill="url(#bgGrad)" />
   
   <!-- Subtle Grid Lines -->
   <g stroke="#334155" stroke-width="0.5" opacity="0.3">
