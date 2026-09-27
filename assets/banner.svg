@@ -1,115 +1,117 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#070a14" />
+      <stop offset="0%" stop-color="#060912" />
       <stop offset="50%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#181534" />
+      <stop offset="100%" stop-color="#16132e" />
     </linearGradient>
     <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#38bdf8" />
       <stop offset="50%" stop-color="#818cf8" />
       <stop offset="100%" stop-color="#c084fc" />
     </linearGradient>
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#121a2c" stop-opacity="0.9" />
-      <stop offset="100%" stop-color="#0b1120" stop-opacity="0.9" />
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
     </linearGradient>
     <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feGaussianBlur stdDeviation="25" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
   </defs>
 
-  <!-- Background -->
+  <!-- Background Canvas -->
   <rect width="1200" height="400" rx="16" fill="url(#bgGrad)" />
 
-  <!-- Glowing Aurora Orbs -->
-  <circle cx="180" cy="100" r="150" fill="#38bdf8" opacity="0.08" filter="url(#glow)" />
-  <circle cx="1020" cy="260" r="170" fill="#818cf8" opacity="0.08" filter="url(#glow)" />
-  <circle cx="600" cy="350" r="140" fill="#c084fc" opacity="0.06" filter="url(#glow)" />
+  <!-- Ambient Glowing Aurora Orbs -->
+  <circle cx="180" cy="100" r="160" fill="#38bdf8" opacity="0.09" filter="url(#glow)" />
+  <circle cx="1040" cy="240" r="180" fill="#818cf8" opacity="0.09" filter="url(#glow)" />
+  <circle cx="620" cy="340" r="140" fill="#c084fc" opacity="0.07" filter="url(#glow)" />
 
-  <!-- Scattered Twinkling Stars (No Grid / No Squares) -->
+  <!-- Starfield Dots (No Grid Lines, No Boxes) -->
   <g fill="#ffffff">
-    <!-- Starfield Dots -->
-    <circle cx="60" cy="80" r="1.5" opacity="0.6" />
+    <circle cx="50" cy="70" r="1.5" opacity="0.6" />
     <circle cx="120" cy="220" r="1" opacity="0.4" />
-    <circle cx="280" cy="50" r="2" opacity="0.8" />
-    <circle cx="340" cy="180" r="1.5" opacity="0.5" />
-    <circle cx="450" cy="90" r="1" opacity="0.6" />
-    <circle cx="530" cy="40" r="2" opacity="0.7" />
-    <circle cx="670" cy="130" r="1.5" opacity="0.5" />
-    <circle cx="780" cy="60" r="2" opacity="0.9" />
-    <circle cx="890" cy="170" r="1" opacity="0.4" />
-    <circle cx="950" cy="40" r="1.5" opacity="0.8" />
-    <circle cx="1120" cy="120" r="2" opacity="0.7" />
-    <circle cx="1160" cy="260" r="1" opacity="0.5" />
-    <circle cx="70" cy="360" r="1.5" opacity="0.6" />
-    <circle cx="580" cy="210" r="1" opacity="0.5" />
-    <circle cx="740" cy="370" r="2" opacity="0.7" />
+    <circle cx="260" cy="40" r="2" opacity="0.8" />
+    <circle cx="340" cy="170" r="1.5" opacity="0.5" />
+    <circle cx="450" cy="80" r="1" opacity="0.6" />
+    <circle cx="530" cy="35" r="2" opacity="0.7" />
+    <circle cx="680" cy="120" r="1.5" opacity="0.5" />
+    <circle cx="780" cy="50" r="2" opacity="0.9" />
+    <circle cx="890" cy="160" r="1" opacity="0.4" />
+    <circle cx="960" cy="35" r="1.5" opacity="0.8" />
+    <circle cx="1120" cy="110" r="2" opacity="0.7" />
+    <circle cx="1160" cy="250" r="1" opacity="0.5" />
+    <circle cx="60" cy="350" r="1.5" opacity="0.6" />
+    <circle cx="580" cy="200" r="1" opacity="0.5" />
+    <circle cx="740" cy="360" r="2" opacity="0.7" />
+    <circle cx="1080" cy="330" r="1.5" opacity="0.6" />
   </g>
 
-  <!-- 4-Point Sparkling Stars -->
-  <!-- Star 1 (Top Left) -->
-  <path d="M 160 50 Q 160 62 148 62 Q 160 62 160 74 Q 160 62 172 62 Q 160 62 160 50 Z" fill="#38bdf8" />
-  <!-- Star 2 (Top Right) -->
-  <path d="M 1060 60 Q 1060 74 1046 74 Q 1060 74 1060 88 Q 1060 74 1074 74 Q 1060 74 1060 60 Z" fill="#fef08a" />
-  <!-- Star 3 (Mid Right) -->
-  <path d="M 1140 180 Q 1140 190 1130 190 Q 1140 190 1140 200 Q 1140 190 1150 190 Q 1140 190 1140 180 Z" fill="#c084fc" />
-  <!-- Star 4 (Bottom Left) -->
-  <path d="M 60 280 Q 60 290 50 290 Q 60 290 60 300 Q 60 290 70 290 Q 60 290 60 280 Z" fill="#34d399" />
-  <!-- Star 5 (Center) -->
-  <path d="M 610 80 Q 610 88 602 88 Q 610 88 610 96 Q 610 88 618 88 Q 610 88 610 80 Z" fill="#ffffff" />
+  <!-- 4-Point Diamond Sparkle Stars -->
+  <path d="M 80 40 Q 80 50 72 50 Q 80 50 80 60 Q 80 50 88 50 Q 80 50 80 40 Z" fill="#38bdf8" />
+  <path d="M 1120 50 Q 1120 62 1108 62 Q 1120 62 1120 74 Q 1120 62 1132 62 Q 1120 62 1120 50 Z" fill="#fef08a" />
+  <path d="M 1150 170 Q 1150 180 1140 180 Q 1150 180 1150 190 Q 1150 180 1160 180 Q 1150 180 1150 170 Z" fill="#c084fc" />
+  <path d="M 50 260 Q 50 270 40 270 Q 50 270 50 280 Q 50 270 60 270 Q 50 270 50 260 Z" fill="#34d399" />
+  <path d="M 610 70 Q 610 78 602 78 Q 610 78 610 86 Q 610 78 618 78 Q 610 78 610 70 Z" fill="#ffffff" />
+  <path d="M 1130 350 Q 1130 360 1120 360 Q 1130 360 1130 370 Q 1130 360 1140 360 Q 1130 360 1130 350 Z" fill="#38bdf8" />
 
-  <!-- Eyebrow Badge -->
+  <!-- Eyebrow Title (No Box) -->
   <g transform="translate(100, 50)">
-    <rect width="320" height="32" rx="16" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1" />
-    <!-- Star inside badge -->
-    <path d="M 22 11 Q 22 16 17 16 Q 22 16 22 21 Q 22 16 27 16 Q 22 16 22 11 Z" fill="#38bdf8" />
-    <text x="36" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#38bdf8" letter-spacing="0.5">STUDENT PRODUCTIVITY AUTOMATION</text>
+    <path d="M 0 10 Q 0 15 -5 15 Q 0 15 0 20 Q 0 15 5 15 Q 0 15 0 10 Z" fill="#38bdf8" />
+    <text x="16" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38bdf8" letter-spacing="1">STUDENT PRODUCTIVITY AUTOMATION</text>
   </g>
 
   <!-- Title & Subtitle -->
-  <text x="100" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.5">
+  <text x="100" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.5">
     Google Classroom <tspan fill="url(#accentGrad)">→</tspan> Calendar &amp; AI Sync ✨
   </text>
-  <text x="100" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="400" fill="#94a3b8">
+  <text x="100" y="165" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="400" fill="#94a3b8">
     Never miss an assignment again. Smart PDF deadline extraction + Gemini AI homework solver.
   </text>
 
-  <!-- 4 Feature Cards (Smooth organic rounded corners) -->
-  <g transform="translate(100, 225)">
-    <rect width="230" height="120" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
-    <rect width="4" height="60" rx="2" x="0" y="30" fill="#38bdf8" />
-    <text x="20" y="44" font-size="22">📚</text>
-    <text x="54" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Classroom Sync</text>
-    <text x="20" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Scans courses, posts &amp;</text>
-    <text x="20" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Drive PDF attachments</text>
+  <!-- Glowing Middle Horizon Line -->
+  <line x1="100" y1="200" x2="1100" y2="200" stroke="url(#lineGrad)" stroke-width="1.5" />
+
+  <!-- 4 Feature Columns (Floating, Clean, No Box Outlines) -->
+  <!-- Column 1 -->
+  <g transform="translate(100, 230)">
+    <path d="M 6 6 Q 6 12 0 12 Q 6 12 6 18 Q 6 12 12 12 Q 6 12 6 6 Z" fill="#38bdf8" />
+    <text x="22" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Classroom Sync</text>
+    <text x="22" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#94a3b8">Scans courses, posts &amp;</text>
+    <text x="22" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#94a3b8">Drive PDF attachments</text>
   </g>
 
-  <g transform="translate(350, 225)">
-    <rect width="230" height="120" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
-    <rect width="4" height="60" rx="2" x="0" y="30" fill="#818cf8" />
-    <text x="20" y="44" font-size="22">⚡</text>
-    <text x="54" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#818cf8">PDF Deadlines</text>
-    <text x="20" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Extracts dates inside</text>
-    <text x="20" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">syllabus &amp; lab sheets</text>
+  <!-- Column 2 -->
+  <g transform="translate(360, 230)">
+    <path d="M 6 6 Q 6 12 0 12 Q 6 12 6 18 Q 6 12 12 12 Q 6 12 6 6 Z" fill="#818cf8" />
+    <text x="22" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#818cf8">PDF Deadlines</text>
+    <text x="22" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#94a3b8">Extracts dates inside</text>
+    <text x="22" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#94a3b8">syllabus &amp; lab sheets</text>
   </g>
 
-  <g transform="translate(600, 225)">
-    <rect width="230" height="120" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
-    <rect width="4" height="60" rx="2" x="0" y="30" fill="#c084fc" />
-    <text x="20" y="44" font-size="22">📅</text>
-    <text x="54" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#c084fc">Calendar &amp; Tasks</text>
-    <text x="20" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">24h/2h popups + email</text>
-    <text x="20" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">alerts with direct links</text>
+  <!-- Column 3 -->
+  <g transform="translate(620, 230)">
+    <path d="M 6 6 Q 6 12 0 12 Q 6 12 6 18 Q 6 12 12 12 Q 6 12 6 6 Z" fill="#c084fc" />
+    <text x="22" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#c084fc">Calendar &amp; Tasks</text>
+    <text x="22" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#94a3b8">24h/2h popups + email</text>
+    <text x="22" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#94a3b8">alerts with direct links</text>
   </g>
 
-  <g transform="translate(850, 225)">
-    <rect width="250" height="120" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
-    <rect width="4" height="60" rx="2" x="0" y="30" fill="#34d399" />
-    <text x="20" y="44" font-size="22">🤖</text>
-    <text x="54" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#34d399">Gemini AI Solver</text>
-    <text x="20" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Generates answers &amp; PDF</text>
-    <text x="20" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">solutions to your inbox</text>
+  <!-- Column 4 -->
+  <g transform="translate(880, 230)">
+    <path d="M 6 6 Q 6 12 0 12 Q 6 12 6 18 Q 6 12 12 12 Q 6 12 6 6 Z" fill="#34d399" />
+    <text x="22" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#34d399">Gemini AI Solver</text>
+    <text x="22" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#94a3b8">Generates answers &amp; PDF</text>
+    <text x="22" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#94a3b8">solutions to your inbox</text>
+  </g>
+
+  <!-- Footer Sparkle Bar -->
+  <g transform="translate(100, 340)">
+    <path d="M 0 5 Q 0 10 -5 10 Q 0 10 0 15 Q 0 10 5 10 Q 0 10 0 5 Z" fill="#fef08a" />
+    <text x="18" y="14" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">
+      Open Source (MIT License) • <tspan fill="#38bdf8">github.com/PurohitBhagyesh/classroom-to-calendar-sync</tspan>
+    </text>
   </g>
 </svg>
