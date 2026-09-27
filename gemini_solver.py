@@ -3,8 +3,13 @@
 import os
 from pathlib import Path
 from typing import Optional
-from google import genai
-from google.genai import types
+
+try:
+    from google import genai
+    from google.genai import types
+except ImportError:
+    genai = None
+    types = None
 
 from config import BASE_DIR
 
@@ -15,7 +20,7 @@ class GeminiAssignmentSolver:
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.environ.get("GEMINI_API_KEY")
         self.client = None
-        if self.api_key:
+        if self.api_key and genai is not None:
             try:
                 self.client = genai.Client(api_key=self.api_key)
             except Exception as e:
@@ -23,7 +28,8 @@ class GeminiAssignmentSolver:
 
     def is_available(self) -> bool:
         """Checks whether Gemini client is configured with a valid API key."""
-        return self.client is not None
+        return self.client is not None and genai is not None
+
 
     def solve_assignment(
         self,
