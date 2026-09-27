@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#030712" />
+    </linearGradient>
+  </defs>
+
+  <!-- Container -->
+  <rect width="900" height="480" rx="12" fill="url(#termBg)" stroke="#1f2937" stroke-width="1.5" />
+
+  <!-- Terminal Top Bar -->
+  <path d="M 0 12 Q 0 0 12 0 L 888 0 Q 900 0 900 12 L 900 40 L 0 40 Z" fill="#111827" />
+  <circle cx="20" cy="20" r="5.5" fill="#ef4444" />
+  <circle cx="38" cy="20" r="5.5" fill="#eab308" />
+  <circle cx="56" cy="20" r="5.5" fill="#22c55e" />
+  <text x="450" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Fira Code', monospace" font-size="12" fill="#6b7280" text-anchor="middle">
+    bash — python main.py sync
+  </text>
+
+  <!-- Terminal Content -->
+  <g transform="translate(30, 65)" font-family="'Fira Code', 'SF Mono', Consolas, monospace" font-size="12.5">
+    <!-- Command Prompt -->
+    <text x="0" y="0" fill="#38bdf8" font-weight="700">student@macbook</text>
+    <text x="140" y="0" fill="#9ca3af">:</text>
+    <text x="150" y="0" fill="#a855f7">~/classroom-sync</text>
+    <text x="290" y="0" fill="#f3f4f6">$ python main.py sync</text>
+
+    <text x="0" y="26" fill="#60a5fa" font-weight="700">🚀 Starting Google Classroom -> Google Calendar Sync...</text>
+    <text x="0" y="48" fill="#4ade80">✔ Authenticated with Google Classroom, Drive, Calendar, Tasks &amp; Gmail</text>
+
+    <!-- Table Frame -->
+    <g transform="translate(0, 70)">
+      <rect width="840" height="150" rx="6" fill="#111827" stroke="#374151" stroke-width="1" />
+      
+      <!-- Table Header -->
+      <rect width="840" height="30" rx="6" fill="#1f2937" />
+      <text x="20" y="20" fill="#38bdf8" font-weight="700">Metric</text>
+      <text x="400" y="20" fill="#38bdf8" font-weight="700">Status / Count</text>
+
+      <!-- Row 1 -->
+      <text x="20" y="52" fill="#e5e7eb">Active Courses Scanned</text>
+      <text x="400" y="52" fill="#f9fafb" font-weight="700">6 courses</text>
+
+      <!-- Row 2 -->
+      <text x="20" y="76" fill="#e5e7eb">PDF Attachments Analyzed</text>
+      <text x="400" y="76" fill="#f9fafb" font-weight="700">14 assignment PDFs parsed</text>
+
+      <!-- Row 3 -->
+      <text x="20" y="100" fill="#e5e7eb">Calendar Events Created / Updated</text>
+      <text x="400" y="100" fill="#4ade80" font-weight="700">✔ 8 events synced (24h &amp; 2h popups + email)</text>
+
+      <!-- Row 4 -->
+      <text x="20" y="124" fill="#e5e7eb">Google Tasks Added</text>
+      <text x="400" y="124" fill="#c084fc" font-weight="700">✔ 8 actionable tasks populated</text>
+
+      <!-- Row 5 -->
+      <text x="20" y="146" fill="#e5e7eb">Gemini AI Solutions Generated</text>
+      <text x="400" y="146" fill="#38bdf8" font-weight="700">✔ 3 assignments solved &amp; emailed</text>
+    </g>
+
+    <!-- Event Logs -->
+    <g transform="translate(0, 245)">
+      <text x="0" y="0" fill="#f3f4f6" font-weight="700">📋 Synchronized Deadlines:</text>
+      
+      <text x="0" y="24" fill="#4ade80">[CREATED]</text>
+      <text x="80" y="24" fill="#f3f4f6">[OS] Lab 4: Memory Management</text>
+      <text x="500" y="24" fill="#38bdf8">Due: Oct 28, 11:59 PM (Classroom)</text>
+
+      <text x="0" y="46" fill="#38bdf8">[PDF EXTRACT]</text>
+      <text x="130" y="46" fill="#f3f4f6">[CN] Term Paper Final Report</text>
+      <text x="500" y="46" fill="#38bdf8">Due: Nov 12, 05:00 PM (Inside PDF)</text>
+
+      <text x="0" y="68" fill="#c084fc">[AI SOLVED]</text>
+      <text x="110" y="68" fill="#f3f4f6">[DBMS] SQL Assignment 3</text>
+      <text x="500" y="68" fill="#a855f7">PDF Compiled &amp; Emailed to Inbox</text>
+    </g>
+
+    <!-- Finished Message -->
+    <g transform="translate(0, 360)">
+      <rect width="840" height="32" rx="6" fill="#22c55e" fill-opacity="0.1" stroke="#22c55e" stroke-width="1" />
+      <text x="20" y="21" fill="#4ade80" font-weight="700">✨ Sync Completed in 1.4s! Your Google Calendar &amp; Tasks are up to date.</text>
+    </g>
+  </g>
+</svg>

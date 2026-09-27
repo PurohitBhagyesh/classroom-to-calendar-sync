@@ -57,9 +57,7 @@ This tool scans all your enrolled courses, downloads assignment PDFs, extracts h
 ### 📅 1. Google Calendar & Multi-Stage Reminders
 Events are automatically color-coded with direct assignment links, PDF attachment links, and context snippets.
 
-<div align="center">
-  <img src="assets/calendar-preview.png" alt="Google Calendar Sync Demo" width="850" onerror="this.src='https://placehold.co/850x400/0f172a/38bdf8?text=Place+your+Google+Calendar+screenshot+in+assets/calendar-preview.png'" />
-</div>
+![Google Calendar Sync Demo](assets/calendar-preview.svg)
 
 <br/>
 
@@ -67,9 +65,7 @@ Events are automatically color-coded with direct assignment links, PDF attachmen
 ### 💻 2. Rich Interactive Terminal Dashboard
 Clean CLI interface powered by `Rich` showing scanned courses, analyzed PDFs, created events, and AI solutions.
 
-<div align="center">
-  <img src="assets/cli-demo.png" alt="Terminal CLI Output" width="850" onerror="this.src='https://placehold.co/850x350/0f172a/818cf8?text=Place+your+CLI+terminal+screenshot+in+assets/cli-demo.png'" />
-</div>
+![Terminal CLI Output](assets/cli-demo.svg)
 
 <br/>
 
@@ -77,11 +73,10 @@ Clean CLI interface powered by `Rich` showing scanned courses, analyzed PDFs, cr
 ### 📝 3. AI-Generated Solution Document (PDF & Email)
 Step-by-step solved homework answers formatted into a printable PDF and emailed to your inbox.
 
-<div align="center">
-  <img src="assets/solution-pdf-preview.png" alt="Gemini AI Solution PDF Preview" width="850" onerror="this.src='https://placehold.co/850x400/0f172a/c084fc?text=Place+your+Solution+PDF+screenshot+in+assets/solution-pdf-preview.png'" />
-</div>
+![Gemini AI Solution PDF Preview](assets/solution-pdf-preview.svg)
 
-> 💡 *To customize or replace these screenshots with your own, see the [Assets & Screenshots Guide](assets/README.md).*
+> 💡 *To replace these with your own custom screenshots, drop PNG images into [`assets/`](assets/) (see [Assets Guide](assets/README.md)).*
+
 
 ---
 

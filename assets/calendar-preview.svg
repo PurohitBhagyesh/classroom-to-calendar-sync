@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="calBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Container -->
+  <rect width="900" height="480" rx="12" fill="url(#calBg)" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Top App Bar -->
+  <path d="M 0 12 Q 0 0 12 0 L 888 0 Q 900 0 900 12 L 900 50 L 0 50 Z" fill="url(#headerGrad)" />
+  <circle cx="25" cy="25" r="6" fill="#ef4444" />
+  <circle cx="45" cy="25" r="6" fill="#eab308" />
+  <circle cx="65" cy="25" r="6" fill="#22c55e" />
+
+  <!-- Title -->
+  <text x="100" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#94a3b8">
+    📅 Google Calendar — "Google Classroom Deadlines" (Auto-Synced)
+  </text>
+  <rect x="760" y="14" width="120" height="24" rx="12" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-width="1" />
+  <text x="778" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">● SYNC ACTIVE</text>
+
+  <!-- Calendar Grid Header (Days) -->
+  <g transform="translate(40, 70)">
+    <rect width="820" height="32" rx="6" fill="#334155" fill-opacity="0.5" />
+    <text x="58" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#94a3b8" text-anchor="middle">MON</text>
+    <text x="175" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#94a3b8" text-anchor="middle">TUE</text>
+    <text x="292" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#94a3b8" text-anchor="middle">WED</text>
+    <text x="410" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">THU (TODAY)</text>
+    <text x="527" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#94a3b8" text-anchor="middle">FRI</text>
+    <text x="644" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#64748b" text-anchor="middle">SAT</text>
+    <text x="761" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#64748b" text-anchor="middle">SUN</text>
+  </g>
+
+  <!-- Calendar Day Grid Cells -->
+  <g transform="translate(40, 110)">
+    <!-- Column Dividers -->
+    <line x1="117" y1="0" x2="117" y2="340" stroke="#334155" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" />
+    <line x1="234" y1="0" x2="234" y2="340" stroke="#334155" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" />
+    <line x1="351" y1="0" x2="351" y2="340" stroke="#334155" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" />
+    <line x1="468" y1="0" x2="468" y2="340" stroke="#38bdf8" stroke-width="1.5" opacity="0.4" />
+    <line x1="585" y1="0" x2="585" y2="340" stroke="#334155" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" />
+    <line x1="702" y1="0" x2="702" y2="340" stroke="#334155" stroke-width="1" stroke-dasharray="3,3" opacity="0.4" />
+
+    <!-- EVENT CARD 1 (Tuesday): Native Classroom Due Date -->
+    <g transform="translate(122, 20)" filter="url(#shadow)">
+      <rect width="108" height="75" rx="6" fill="#eab308" fill-opacity="0.2" stroke="#eab308" stroke-width="1.2" />
+      <rect width="108" height="4" rx="2" fill="#eab308" />
+      <text x="8" y="20" font-family="sans-serif" font-size="10" font-weight="700" fill="#fef08a">11:59 PM</text>
+      <text x="8" y="36" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">[OS] Lab 4</text>
+      <text x="8" y="52" font-family="sans-serif" font-size="9.5" fill="#cbd5e1">Memory Mgmt</text>
+      <text x="8" y="66" font-family="sans-serif" font-size="8.5" fill="#fbbf24">🔔 24h &amp; 2h alert</text>
+    </g>
+
+    <!-- EVENT CARD 2 (Thursday - TODAY): Extracted from PDF -->
+    <g transform="translate(356, 120)" filter="url(#shadow)">
+      <rect width="108" height="90" rx="6" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1.5" />
+      <rect width="108" height="4" rx="2" fill="#38bdf8" />
+      <text x="8" y="20" font-family="sans-serif" font-size="10" font-weight="700" fill="#7dd3fc">5:00 PM (PDF)</text>
+      <text x="8" y="36" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">[CN] Term Paper</text>
+      <text x="8" y="52" font-family="sans-serif" font-size="9" fill="#93c5fd">📄 Extracted Date</text>
+      <text x="8" y="68" font-family="sans-serif" font-size="8.5" fill="#38bdf8">🔗 Direct Link</text>
+      <text x="8" y="82" font-family="sans-serif" font-size="8.5" fill="#4ade80">🤖 Solved w/ AI</text>
+    </g>
+
+    <!-- EVENT CARD 3 (Friday): Milestone Deadline -->
+    <g transform="translate(473, 40)" filter="url(#shadow)">
+      <rect width="108" height="75" rx="6" fill="#c084fc" fill-opacity="0.2" stroke="#c084fc" stroke-width="1.2" />
+      <rect width="108" height="4" rx="2" fill="#c084fc" />
+      <text x="8" y="20" font-family="sans-serif" font-size="10" font-weight="700" fill="#e9d5ff">11:59 PM</text>
+      <text x="8" y="36" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">[DBMS] Project</text>
+      <text x="8" y="52" font-family="sans-serif" font-size="9.5" fill="#cbd5e1">Milestone 2 Due</text>
+      <text x="8" y="66" font-family="sans-serif" font-size="8.5" fill="#c084fc">🔔 Email Reminder</text>
+    </g>
+
+    <!-- EVENT CARD 4 (Sunday): Assignment All-day -->
+    <g transform="translate(707, 180)" filter="url(#shadow)">
+      <rect width="108" height="65" rx="6" fill="#f43f5e" fill-opacity="0.2" stroke="#f43f5e" stroke-width="1.2" />
+      <rect width="108" height="4" rx="2" fill="#f43f5e" />
+      <text x="8" y="20" font-family="sans-serif" font-size="10" font-weight="700" fill="#fda4af">All Day</text>
+      <text x="8" y="36" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff">[SE] Quiz Prep</text>
+      <text x="8" y="52" font-family="sans-serif" font-size="9" fill="#fca5a5">Chapter 4-7</text>
+    </g>
+
+    <!-- Legend box -->
+    <g transform="translate(0, 290)">
+      <rect width="820" height="42" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <circle cx="25" cy="21" r="5" fill="#eab308" />
+      <text x="36" y="25" font-family="sans-serif" font-size="11" fill="#cbd5e1">Native Due Date</text>
+
+      <circle cx="165" cy="21" r="5" fill="#38bdf8" />
+      <text x="176" y="25" font-family="sans-serif" font-size="11" fill="#cbd5e1">Extracted from PDF Attachment</text>
+
+      <circle cx="395" cy="21" r="5" fill="#c084fc" />
+      <text x="406" y="25" font-family="sans-serif" font-size="11" fill="#cbd5e1">Project Milestone</text>
+
+      <text x="640" y="25" font-family="sans-serif" font-size="11" font-weight="600" fill="#38bdf8">🔔 Popups + Emails Active (24h &amp; 2h)</text>
+    </g>
+  </g>
+</svg>
