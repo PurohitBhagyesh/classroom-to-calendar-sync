@@ -1,241 +1,272 @@
-# Google Classroom to Google Calendar & AI Automation 📅🤖
+<div align="center">
 
-[![CI](https://github.com/purohitbhagyesh/classroom-to-calendar-sync/actions/workflows/ci.yml/badge.svg)](https://github.com/purohitbhagyesh/classroom-to-calendar-sync/actions/workflows/ci.yml)
+![Google Classroom to Calendar & AI Sync](assets/banner.svg)
+
+# 🎓 Google Classroom to Google Calendar & AI Automation
+
+**The ultimate student productivity assistant. Never miss an assignment, project milestone, or PDF deadline again.**
+
+[![CI](https://github.com/PurohitBhagyesh/classroom-to-calendar-sync/actions/workflows/ci.yml/badge.svg)](https://github.com/PurohitBhagyesh/classroom-to-calendar-sync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Google Classroom](https://img.shields.io/badge/Google%20Classroom-API-0F9D58.svg?logo=googleclassroom&logoColor=white)](https://developers.google.com/classroom)
+[![Google Calendar](https://img.shields.io/badge/Google%20Calendar-API-4285F4.svg?logo=googlecalendar&logoColor=white)](https://developers.google.com/calendar)
+[![Gemini AI](https://img.shields.io/badge/Google%20Gemini-AI%20Solver-8E75B2.svg?logo=googlegemini&logoColor=white)](https://aistudio.google.com/)
 
-An end-to-end intelligent automation suite that synchronizes **Google Classroom** assignments, announcements, and course materials directly to **Google Calendar** and **Google Tasks**. Features smart **PDF deadline extraction** from syllabus/rubric attachments, **AI-powered homework solving** via Google Gemini, printable **Solution PDF compilation**, and automated **Gmail dispatching**.
+[Key Features](#-key-features) • [Why Students Love This](#-why-students-love-this) • [Quickstart Guide](#-quickstart-guide) • [Visual Demos](#-visual-previews--demos) • [CLI Commands](#-cli-commands--usage) • [macOS Daemon](#-macos-background-daemon) • [Contributing](#-contributing)
+
+</div>
 
 ---
 
-## 🌟 Key Features
+## 🎯 The Student Problem This Solves
+
+> *"My professor posted a 10-page assignment PDF with the deadline buried on page 3 in tiny text, without setting an official Google Classroom due date. I missed the submission and lost 20% of my grade."*
+
+**Does this sound familiar?**
+- ❌ Professors frequently attach lab manuals, rubrics, and PDFs without filling in Classroom's native deadline field.
+- ❌ Students have to manually click through 6+ different subjects every day to check for new announcements.
+- ❌ Important project milestones (`"Milestone 1 due in 2 weeks"`) get lost in long PDFs.
+- ❌ No automatic popup or email reminders when deadlines approach.
+
+### 💡 The Automated Solution:
+This tool scans all your enrolled courses, downloads assignment PDFs, extracts hidden submission dates using NLP & Regex, schedules events in **Google Calendar** with **24h & 2h popups + email notifications**, adds actionable **Google Tasks**, and can even **solve assignment questions with Gemini AI** and email printable PDF answers straight to your inbox!
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+| :--- | :--- |
+| 🔄 **Classroom Auto-Scan** | Fetches assignments, coursework, announcements, and Google Drive attachments across all enrolled courses. |
+| ⚡ **Smart PDF Deadline Parser** | Reads attached PDFs and extracts hidden dates (`"Submission: Oct 28 at 11:59 PM"`, `"Due by 15/11/2026"`). |
+| 📅 **Google Calendar Sync** | Creates a dedicated `"Google Classroom Deadlines"` calendar with color coding and direct links. |
+| 🔔 **Multi-Stage Reminders** | Configures both popup notifications and email reminders **24 hours** and **2 hours** before the deadline. |
+| 📋 **Google Tasks Integration** | Automatically populates your Google Tasks checklist with due dates and direct assignment URLs. |
+| 🤖 **Gemini AI Homework Solver** | (Optional) Analyzes assignment questions and generates step-by-step solutions with code and diagrams. |
+| 📑 **Printable PDF Generator** | Converts AI solutions into clean, styled, ready-to-print PDF documents using ReportLab. |
+| ✉️ **Gmail Dispatcher** | Delivers generated solution markdown and attached PDF reports directly to your Gmail inbox. |
+| 🔄 **Smart Deduplication** | Uses SQLite database state tracking to prevent duplicate events and updates modified deadlines. |
+| 🍎 **macOS Background Daemon** | Runs silently in the background at custom intervals (e.g. every 4 days) via Apple LaunchAgent. |
+
+---
+
+## 🖼️ Visual Previews & Demos
+
+<!-- SCREENSHOT 1: GOOGLE CALENDAR PREVIEW -->
+### 📅 1. Google Calendar & Multi-Stage Reminders
+Events are automatically color-coded with direct assignment links, PDF attachment links, and context snippets.
+
+<div align="center">
+  <img src="assets/calendar-preview.png" alt="Google Calendar Sync Demo" width="850" onerror="this.src='https://placehold.co/850x400/0f172a/38bdf8?text=Place+your+Google+Calendar+screenshot+in+assets/calendar-preview.png'" />
+</div>
+
+<br/>
+
+<!-- SCREENSHOT 2: TERMINAL CLI OUTPUT -->
+### 💻 2. Rich Interactive Terminal Dashboard
+Clean CLI interface powered by `Rich` showing scanned courses, analyzed PDFs, created events, and AI solutions.
+
+<div align="center">
+  <img src="assets/cli-demo.png" alt="Terminal CLI Output" width="850" onerror="this.src='https://placehold.co/850x350/0f172a/818cf8?text=Place+your+CLI+terminal+screenshot+in+assets/cli-demo.png'" />
+</div>
+
+<br/>
+
+<!-- SCREENSHOT 3: GEMINI AI SOLUTIONS PDF -->
+### 📝 3. AI-Generated Solution Document (PDF & Email)
+Step-by-step solved homework answers formatted into a printable PDF and emailed to your inbox.
+
+<div align="center">
+  <img src="assets/solution-pdf-preview.png" alt="Gemini AI Solution PDF Preview" width="850" onerror="this.src='https://placehold.co/850x400/0f172a/c084fc?text=Place+your+Solution+PDF+screenshot+in+assets/solution-pdf-preview.png'" />
+</div>
+
+> 💡 *To customize or replace these screenshots with your own, see the [Assets & Screenshots Guide](assets/README.md).*
+
+---
+
+## 🏗️ Architecture & Workflow
 
 ```
-  ┌───────────────────────┐
-  │   Google Classroom    │  (Courses, Coursework, Announcements, PDF Attachments)
-  └──────────┬────────────┘
-             │
-             ▼
-  ┌───────────────────────┐
-  │ PDF Deadline Parser   │  (Regex + NLP: extracts submission dates, times & milestones)
-  └──────────┬────────────┘
-             ├─────────────────────────────────────────────────┐
-             ▼                                                 ▼
-  ┌───────────────────────┐                         ┌───────────────────────┐
-  │ Google Calendar Sync  │                         │   Google Tasks Sync   │
-  │ • Popups & Email Alerts                         │ • Actionable Checklists
-  │ • Direct Links & Notes                          │ • RFC3339 Deadlines
-  └──────────┬────────────┘                         └───────────────────────┘
-             │
-             ▼
-  ┌───────────────────────┐
-  │  Gemini AI Solver     │  (Solves assignment questions step-by-step)
-  └──────────┬────────────┘
-             │
-             ├────────────────────────────────┐
-             ▼                                ▼
-  ┌───────────────────────┐        ┌───────────────────────┐
-  │ ReportLab PDF Builder │        │   Gmail Dispatcher    │
-  │ • Generates Solution  │        │ • Delivers solutions  │
-  │   PDF Document        │        │   & PDF to inbox      │
-  └───────────────────────┘        └───────────────────────┘
+                        ┌─────────────────────────────────────┐
+                        │       Google Classroom API          │
+                        │  (Courses, Assignments, Drive PDFs) │
+                        └──────────────────┬──────────────────┘
+                                           │
+                                           ▼
+                        ┌─────────────────────────────────────┐
+                        │      PDF Deadline Extractor         │
+                        │  (Regex + NLP Submission Detection) │
+                        └──────────────────┬──────────────────┘
+                                           │
+                ┌──────────────────────────┴──────────────────────────┐
+                ▼                                                     ▼
+┌───────────────────────────────┐                     ┌───────────────────────────────┐
+│     Google Calendar API       │                     │       Google Tasks API        │
+│ • "Google Classroom Deadlines"│                     │ • Actionable To-Do Checklists │
+│ • 24h & 2h Popups + Emails    │                     │ • Direct Link Attachments     │
+└───────────────┬───────────────┘                     └───────────────────────────────┘
+                │
+                ▼
+┌───────────────────────────────┐
+│     Gemini AI Solver          │  (Optional: Solves questions step-by-step)
+└───────────────┬───────────────┘
+                │
+        ┌───────┴─────────────────────────────┐
+        ▼                                     ▼
+┌───────────────────────────────┐     ┌───────────────────────────────┐
+│     ReportLab PDF Builder     │     │      Gmail API Dispatcher     │
+│ • Formats & Compiles Solution │     │ • Delivers markdown & PDF to  │
+│   PDF Document                │     │   your Gmail inbox            │
+└───────────────────────────────┘     └───────────────────────────────┘
 ```
 
-1. **Intelligent PDF Deadline & Date Extraction**:
-   - Downloads attached assignment PDFs from Google Drive.
-   - Extracts text and scans for submission deadlines (`"Submission Date: Oct 28 at 11:59 PM"`, `"Due on or before 15/11/2026"`).
-   - Accurately distinguishes between timed deadlines and all-day submissions.
-
-2. **Google Calendar & Tasks Synchronization**:
-   - Automatically provisions a dedicated **"Google Classroom Deadlines"** calendar and Google Tasks list.
-   - Sets multi-stage notifications: popup reminder **24 hours** and **2 hours** prior, plus email reminders.
-   - Embeds direct links to the Google Classroom assignment and Google Drive PDF attachment.
-
-3. **Gemini AI Assignment Solver**:
-   - Analyzes questions from assignment PDFs using Gemini models.
-   - Generates formatted markdown answers with step-by-step explanations, text diagrams, and code blocks.
-
-4. **Printable PDF Generator & Gmail Dispatcher**:
-   - Converts AI solutions into beautifully styled, printable PDF documents.
-   - Automatically emails the solutions and PDF attachment to your inbox via Gmail API.
-
-5. **Deduplication & State Persistence**:
-   - Stores tracking hashes in local SQLite database (`sync_state.sqlite`).
-   - Automatically patches and updates calendar events if an instructor changes the deadline.
-
-6. **Continuous Watch & macOS Background Daemon**:
-   - Run in watch mode (`python main.py watch --interval 30`) or install a silent background LaunchAgent (`./run.sh autostart`).
-
 ---
 
-## 📋 Prerequisites & Permissions Guide
+## 🚀 Quickstart Guide
 
-To allow the automation to access your Google Classroom, Drive, Calendar, Tasks, and Gmail, set up OAuth 2.0 Desktop Credentials:
+### 1. Prerequisites
+- Python 3.10 or higher
+- A Google Account (student or personal)
+- A Google Cloud Project with OAuth 2.0 Desktop Credentials ([Step-by-Step Setup Guide](#-google-cloud-credentials-setup))
 
-### 1. Enable Google APIs
-1. Visit the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new Google Cloud Project (e.g. `Classroom-Automation`).
-3. Navigate to **APIs & Services > Library** and enable:
-   - **Google Classroom API**
-   - **Google Drive API**
-   - **Google Calendar API**
-   - **Google Tasks API**
-   - **Gmail API** (for solution dispatching)
-
-### 2. Configure OAuth Consent Screen
-1. Go to **APIs & Services > OAuth consent screen**.
-2. Select **External** user type and click **Create**.
-3. Fill in the App Name (e.g., `Classroom Automation`) and your developer email.
-4. Under **Test Users**, click **Add Users** and add your Google account email address.
-
-### 3. Create OAuth 2.0 Client Credentials
-1. Go to **APIs & Services > Credentials**.
-2. Click **Create Credentials > OAuth client ID**.
-3. Set Application type to **Desktop app** and name it `Classroom Sync Desktop`.
-4. Click **Create**, then click **Download JSON**.
-5. Save the file as `credentials.json` in the project root:
-   ```bash
-   cp ~/Downloads/client_secret_*.json ./credentials.json
-   ```
-
----
-
-## 🚀 Quickstart Installation
-
-### 1. Clone the Repository
+### 2. Clone the Repository
 ```bash
-git clone https://github.com/purohitbhagyesh/classroom-to-calendar-sync.git
+git clone https://github.com/PurohitBhagyesh/classroom-to-calendar-sync.git
 cd classroom-to-calendar-sync
 ```
 
-### 2. Create and Activate Virtual Environment
+### 3. Create & Activate Virtual Environment
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Configure Environment Variables (Optional)
-Copy `.env.example` to `.env` and configure your API keys and preferences:
+### 4. Setup Google Credentials
+1. Follow the [Google Cloud Setup Guide](#-google-cloud-credentials-setup) below to download your `credentials.json`.
+2. Place `credentials.json` in the root folder:
+   ```bash
+   cp ~/Downloads/client_secret_*.json ./credentials.json
+   ```
+
+### 5. Configure Optional Settings (`.env`)
 ```bash
 cp .env.example .env
 ```
-Edit `.env`:
+Edit `.env` (optional):
 ```env
+# Optional: Add your Gemini API Key to enable AI homework solving
 GEMINI_API_KEY=your_gemini_api_key_here
+
+# Optional: Add recipient email to receive AI PDF solutions
 RECIPIENT_EMAIL=your_email@example.com
+
+# Optional: Fallback timezone (e.g., "Asia/Kolkata", "America/New_York", "auto")
 SYNC_TIMEZONE=auto
 ```
 
-### 4. Authenticate
-Run the one-time OAuth authentication flow:
+### 6. Authenticate & Connect
+Run the setup command to log in with your Google account via browser:
 ```bash
 python main.py setup
 ```
-*A browser window will open asking you to sign in with your Google Account and approve the requested permissions.*
+*A browser tab will open asking you to allow Calendar, Classroom, Drive, and Tasks permissions. Once approved, you are ready to sync!*
 
 ---
 
-## 💻 CLI Usage & Commands
+## 🔑 Google Cloud Credentials Setup
 
-### 1. One-Time Synchronization
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2. Click **Create Project** (e.g. `Classroom-Sync`).
+3. Under **APIs & Services > Library**, search for and enable:
+   - ✅ **Google Classroom API**
+   - ✅ **Google Drive API**
+   - ✅ **Google Calendar API**
+   - ✅ **Google Tasks API**
+   - ✅ **Gmail API** *(Optional, for email dispatching)*
+4. Under **APIs & Services > OAuth consent screen**:
+   - Select **External** and click **Create**.
+   - Enter an App Name (e.g. `Classroom Sync`) and your email address.
+   - Under **Test Users**, add your Google email address.
+5. Under **APIs & Services > Credentials**:
+   - Click **Create Credentials > OAuth client ID**.
+   - Application Type: **Desktop app**.
+   - Name: `Classroom Desktop Sync`.
+   - Click **Create**, then click **Download JSON**.
+   - Rename downloaded file to `credentials.json` and move it to the project root.
+
+---
+
+## 💻 CLI Commands & Usage
+
+### 🔄 1. Run Synchronization
 ```bash
-# Sync all courses (last 30 days)
+# Sync all courses from the last 30 days
 python main.py sync
 
-# Perform a dry-run (simulation without writing to Calendar/Tasks)
+# Dry-run mode (preview without making changes to Google Calendar)
 python main.py sync --dry-run
 
-# Filter by course name
-python main.py sync --filter "Computer Networks"
+# Filter by course name (e.g., only "Operating Systems")
+python main.py sync --filter "Operating Systems"
 
-# Target a specific Google Calendar
-python main.py sync --calendar-name "primary"
+# Force update all existing calendar entries
+python main.py sync --force
 ```
 
-### 2. Continuous Background Watch Mode
+### ⏱️ 2. Continuous Watch Daemon
 ```bash
-# Run continuous sync every 30 minutes
+# Automatically scan for new assignments every 30 minutes
 python main.py watch --interval 30
 ```
 
-### 3. Test PDF Deadline Extraction on Local Files
+### 🧪 3. Test PDF Deadline Extraction Locally
 ```bash
-# Test extraction against any syllabus or assignment PDF
-python main.py test-pdf path/to/assignment.pdf
+# Test date/time extraction on any syllabus or assignment PDF
+python main.py test-pdf path/to/assignment_sheet.pdf
 ```
 
-### 4. Solve Assignment PDF with Gemini AI
+### 🤖 4. Solve Assignment with Gemini AI
 ```bash
-# Solve questions, compile PDF solution, and email it
-python main.py solve path/to/assignment.pdf \
-    --course "Operating Systems" \
-    --title "Process Scheduling Lab" \
-    --email "your_email@example.com"
+# Solve questions in a PDF, compile a solution document, and email it
+python main.py solve path/to/lab_manual.pdf \
+    --course "Computer Networks" \
+    --title "Subnetting Assignment" \
+    --email "student@university.edu"
 ```
 
-### 5. Check Local Sync Database Status
+### 📊 5. View Local Sync State & Database
 ```bash
+# View all synchronized assignments and their linked Google Calendar IDs
 python main.py status
 ```
 
 ---
 
-## 🍎 macOS Background Daemon (LaunchAgent)
+## 🍎 macOS Background Daemon
 
-Automate synchronization in the background on macOS:
+Want the sync to run completely automatically in the background on your Mac?
 
 ```bash
-# Install and activate background sync daemon (runs every 4 days)
+# Make the helper script executable
+chmod +x run.sh
+
+# Install background daemon (runs automatically every 4 days)
 ./run.sh autostart
 
-# Check status
+# Check sync status
 ./run.sh status
 
-# Stop and remove background daemon
+# Stop and uninstall background daemon
 ./run.sh stop-autostart
-```
-
----
-
-## 📁 Repository Structure
-
-```
-classroom-to-calendar-sync/
-├── .github/
-│   └── workflows/
-│       └── ci.yml                 # Automated CI test workflow
-├── config.py                      # Global configurations, scopes, and defaults
-├── auth.py                        # Google OAuth 2.0 token management
-├── classroom_client.py            # Classroom & Drive API client
-├── calendar_client.py             # Google Calendar event & notification manager
-├── tasks_client.py                # Google Tasks synchronization client
-├── pdf_extractor.py               # Regex & dateparser deadline extraction engine
-├── gemini_solver.py               # Gemini AI assignment solution engine
-├── pdf_generator.py               # ReportLab styled solution PDF builder
-├── email_dispatcher.py            # Gmail API solution dispatcher
-├── sync_manager.py                # Orchestration pipeline and SQLite state store
-├── main.py                        # Rich CLI entrypoint
-├── run.sh                         # Shell automation & LaunchAgent installer
-├── requirements.txt               # Dependencies
-├── pytest.ini                     # Pytest test configuration
-├── tests/                         # Automated unit & integration tests
-│   ├── test_pdf_extractor.py
-│   └── test_sync_manager.py
-├── .env.example                   # Environment configuration template
-├── credentials.example.json       # OAuth client credentials template
-├── .gitignore                     # Git ignore rules for tokens, secrets & caches
-├── LICENSE                        # MIT License
-├── CONTRIBUTING.md                # Contribution guidelines
-└── SECURITY.md                    # Security policy
 ```
 
 ---
 
 ## 🧪 Running Tests
 
-Execute the complete test suite:
+Run the complete unit and integration test suite:
 
 ```bash
 pytest -v
@@ -243,14 +274,71 @@ pytest -v
 
 ---
 
-## 🔒 Security and Privacy
+## 📁 Project Structure
 
-- **Never commit `credentials.json`, `token.json`, or `.env` files.**
-- Tokens and personal data are stored only locally in your private workspace.
-- This application communicates directly with official Google APIs over HTTPS.
+```
+classroom-to-calendar-sync/
+├── assets/                        # Banners, screenshots, and visual guides
+│   ├── banner.svg
+│   └── README.md
+├── .github/
+│   └── workflows/
+│       └── ci.yml                 # Automated CI/CD test pipeline
+├── config.py                      # Scopes, reminder defaults, and settings
+├── auth.py                        # OAuth 2.0 authentication manager
+├── classroom_client.py            # Google Classroom & Drive API wrapper
+├── calendar_client.py             # Google Calendar manager & reminder creator
+├── tasks_client.py                # Google Tasks list & task sync client
+├── pdf_extractor.py               # Regex + NLP PDF date/time parsing engine
+├── gemini_solver.py               # Gemini AI assignment solver
+├── pdf_generator.py               # ReportLab styled solution PDF builder
+├── email_dispatcher.py            # Gmail API solution dispatcher
+├── sync_manager.py                # Pipeline orchestrator & SQLite state store
+├── main.py                        # Rich CLI entrypoint
+├── run.sh                         # Automation runner & LaunchAgent manager
+├── requirements.txt               # Dependencies
+├── pytest.ini                     # Pytest configuration
+├── tests/                         # Automated test suite (13 passing tests)
+│   ├── test_clients.py
+│   ├── test_pdf_extractor.py
+│   └── test_sync_manager.py
+├── .env.example                   # Environment configuration template
+├── credentials.example.json       # OAuth client credentials template
+├── .gitignore                     # Protection for tokens, keys & databases
+├── LICENSE                        # MIT License (Unrestricted permissions)
+├── CONTRIBUTING.md                # Contribution guide
+└── SECURITY.md                    # Security policy
+```
+
+---
+
+## 🔒 Privacy & Security
+
+- 🛡️ **Zero Third-Party Servers**: Runs 100% locally on your machine.
+- 🔑 **Secure Token Storage**: Your OAuth tokens and `credentials.json` are strictly stored in your local workspace and ignored by git.
+- 🌐 **Direct Google HTTPS**: All requests communicate directly with official Google APIs.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Whether it's adding new PDF date patterns, improving AI prompts, or adding new integrations:
+
+1. Fork the Project (`https://github.com/PurohitBhagyesh/classroom-to-calendar-sync`)
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE) - open for everyone to use, modify, and distribute freely.
+Distributed under the **MIT License**. Free for students, educators, and developers to use, customize, and build upon. See [LICENSE](LICENSE) for more information.
+
+<div align="center">
+  <b>Built with ❤️ to help students stay ahead of their deadlines.</b><br/>
+  ⭐ <i>If this helped you manage your coursework, give it a star on GitHub!</i>
+</div>
