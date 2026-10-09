@@ -122,11 +122,11 @@ class ClassroomClient:
             year = due_date.get("year", datetime.now().year)
             month = due_date.get("month", 1)
             day = due_date.get("day", 1)
-            hour = due_time.get("hours", 23) if due_time else 23
-            minute = due_time.get("minutes", 59) if due_time else 59
+            hour = due_time.get("hours", 23) if due_time and due_time.get("hours") is not None else 23
+            minute = due_time.get("minutes", 59) if due_time and due_time.get("minutes") is not None else 59
             try:
                 native_due = datetime(year, month, day, hour, minute)
-            except ValueError:
+            except (ValueError, TypeError):
                 native_due = None
 
         attachments = self._extract_attachments(data.get("materials", []))
@@ -191,23 +191,24 @@ class ClassroomClient:
                 file_id = df.get("id")
                 title = df.get("title", "Untitled File")
                 alt_link = df.get("alternateLink")
-                is_pdf = title.lower().endswith(".pdf")
+                is_pdf = bool(title and title.lower().endswith(".pdf"))
 
-                attachments.append(
-                    AttachmentInfo(
-                        id=file_id,
-                        title=title,
-                        alternate_link=alt_link,
-                        mime_type="application/pdf" if is_pdf else None,
-                        is_pdf=is_pdf,
-                        drive_file_id=file_id,
+                if file_id:
+                    attachments.append(
+                        AttachmentInfo(
+                            id=file_id,
+                            title=title,
+                            alternate_link=alt_link,
+                            mime_type="application/pdf" if is_pdf else None,
+                            is_pdf=is_pdf,
+                            drive_file_id=file_id,
+                        )
                     )
-                )
             elif "link" in mat:
                 link_obj = mat["link"]
                 url = link_obj.get("url", "")
                 title = link_obj.get("title", url)
-                is_pdf = url.lower().endswith(".pdf")
+                is_pdf = bool(url and url.lower().endswith(".pdf"))
                 attachments.append(
                     AttachmentInfo(
                         id=url,

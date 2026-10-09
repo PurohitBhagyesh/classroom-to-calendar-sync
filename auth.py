@@ -88,4 +88,5 @@ class AuthManager:
             creds = self.get_credentials()
             return build("gmail", "v1", credentials=creds)
         except Exception as e:
+            print(f"[Warning] Gmail service unavailable: {e}")
             return None

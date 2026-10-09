@@ -30,9 +30,8 @@ class GeminiAssignmentSolver:
         """Checks whether Gemini client is configured with a valid API key."""
         return self.client is not None and genai is not None
 
-
     def solve_assignment(
-        self,
+        self, int,
         pdf_text: str,
         assignment_title: str,
         course_name: str,
@@ -72,12 +71,12 @@ Please structure your response as:
 Provide clear, formatted markdown solutions with proper numbering, explanations, and code blocks.
 """
 
-        # Fast and reliable models
+        # Production Gemini model fallbacks
         models_to_try = [
+            "gemini-2.5-flash",
+            "gemini-2.0-flash",
+            "gemini-1.5-flash",
             "gemini-flash-lite-latest",
-            "gemini-3.1-flash-lite",
-            "gemini-3.8-flash-lite-tts",
-            "gemini-flash-latest",
         ]
 
         for model_name in models_to_try:
@@ -102,6 +101,7 @@ Provide clear, formatted markdown solutions with proper numbering, explanations,
                     return solution_text
 
             except Exception as e:
+                print(f"[Debug] Model {model_name} failed: {e}. Trying fallback...")
                 continue
 
         print("[Error] Gemini failed to solve assignment across available models.")
