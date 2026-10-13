@@ -31,7 +31,7 @@ class GeminiAssignmentSolver:
         return self.client is not None and genai is not None
 
     def solve_assignment(
-        self, int,
+        self,
         pdf_text: str,
         assignment_title: str,
         course_name: str,

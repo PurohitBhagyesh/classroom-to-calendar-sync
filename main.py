@@ -199,7 +199,6 @@ def handle_test_pdf(args):
 
 def handle_status(args):
     """Displays local SQLite synchronization database records."""
-    auth = AuthManager()
     classroom_client = ClassroomClient(None, None)
     calendar_client = CalendarClient(None)
     manager = SyncManager(classroom_client, calendar_client)

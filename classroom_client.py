@@ -72,34 +72,52 @@ class ClassroomClient:
 
         # 1. Fetch CourseWork (Assignments)
         try:
-            cw_response = self.classroom.courses().courseWork().list(
-                courseId=course_id,
-                pageSize=100
-            ).execute()
-            for cw in cw_response.get("courseWork", []):
-                items.append(self._parse_coursework_item(course_id, course_name, cw))
+            page_token = None
+            while True:
+                cw_response = self.classroom.courses().courseWork().list(
+                    courseId=course_id,
+                    pageSize=100,
+                    pageToken=page_token,
+                ).execute()
+                for cw in cw_response.get("courseWork", []):
+                    items.append(self._parse_coursework_item(course_id, course_name, cw))
+                page_token = cw_response.get("nextPageToken")
+                if not page_token:
+                    break
         except Exception as e:
             print(f"[Warning] Failed to fetch coursework for course {course_name} ({course_id}): {e}")
 
         # 2. Fetch Announcements
         try:
-            ann_response = self.classroom.courses().announcements().list(
-                courseId=course_id,
-                pageSize=50
-            ).execute()
-            for ann in ann_response.get("announcements", []):
-                items.append(self._parse_announcement_item(course_id, course_name, ann))
+            page_token = None
+            while True:
+                ann_response = self.classroom.courses().announcements().list(
+                    courseId=course_id,
+                    pageSize=50,
+                    pageToken=page_token,
+                ).execute()
+                for ann in ann_response.get("announcements", []):
+                    items.append(self._parse_announcement_item(course_id, course_name, ann))
+                page_token = ann_response.get("nextPageToken")
+                if not page_token:
+                    break
         except Exception as e:
             print(f"[Warning] Failed to fetch announcements for course {course_name} ({course_id}): {e}")
 
         # 3. Fetch Course Work Materials (if user has permissions)
         try:
-            mat_response = self.classroom.courses().courseWorkMaterials().list(
-                courseId=course_id,
-                pageSize=50
-            ).execute()
-            for mat in mat_response.get("courseWorkMaterial", []):
-                items.append(self._parse_material_item(course_id, course_name, mat))
+            page_token = None
+            while True:
+                mat_response = self.classroom.courses().courseWorkMaterials().list(
+                    courseId=course_id,
+                    pageSize=50,
+                    pageToken=page_token,
+                ).execute()
+                for mat in mat_response.get("courseWorkMaterial", []):
+                    items.append(self._parse_material_item(course_id, course_name, mat))
+                page_token = mat_response.get("nextPageToken")
+                if not page_token:
+                    break
         except Exception as e:
             # 403 is expected for student accounts as courseWorkMaterials requires teacher permission
             if "403" not in str(e) and "ACCESS_TOKEN_SCOPE_INSUFFICIENT" not in str(e):
